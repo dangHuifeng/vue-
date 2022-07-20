@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>悦听player</title>
+    <!-- 样式 -->
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <!-- 播放器主体区域 -->
+      <div class="play_wrap" id="player">
+        <div class="search_bar">
+          <img src="images/player_title.png" alt="" />
+          <!-- 搜索歌曲 -->
+          <input type="text" autocomplete="off" />
+        </div>
+        <div class="center_con">
+          <!-- 搜索歌曲列表 -->
+          <div class="song_wrapper">
+            <ul class="song_list">
+              <li>
+                <a href="javascript:;"></a>
+                <b>歌曲名称</b>
+                <span><i></i></span>
+              </li>
+            </ul>
+            <img src="images/line.png" class="switch_btn" alt="" />
+          </div>
+          <!-- 歌曲信息容器 -->
+          <div class="player_con">
+            <img src="images/player_bar.png" class="play_bar" />
+            <!-- 黑胶碟片 -->
+            <img src="images/disc.png" class="disc autoRotate" />
+            <img class="cover autoRotate" />
+          </div>
+          <!-- 评论容器 -->
+          <div class="comment_wrapper">
+            <h5 class="title">热门留言</h5>
+            <div class="comment_list">
+              <dl>
+                <dt><img alt="" /></dt>
+                <dd class="name">测试</dd>
+                <dd class="detail">留言</dd>
+              </dl>
+            </div>
+            <img src="images/line.png" class="right_line" />
+          </div>
+        </div>
+        <div class="audio_con">
+          <audio ref="audio" controls autoplay loop class="myaudio"></audio>
+        </div>
+        <div class="video_con" style="display: none">
+          <video controls="controls"></video>
+          <div class="mask"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 官网提供的 axios 在线地址 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+      /*
+  1:歌曲搜索接口
+    请求地址:https://autumnfish.cn/search
+    请求方法:get
+    请求参数:keywords(查询关键字)
+    响应内容:歌曲搜索结果
+
+  2:歌曲url获取接口
+    请求地址:https://autumnfish.cn/song/url
+    请求方法:get
+    请求参数:id(歌曲id)
+    响应内容:歌曲url地址
+  3.歌曲详情获取
+    请求地址:https://autumnfish.cn/song/detail
+    请求方法:get
+    请求参数:ids(歌曲id)
+    响应内容:歌曲详情(包括封面信息)
+  4.热门评论获取
+    请求地址:https://autumnfish.cn/comment/hot?type=0
+    请求方法:get
+    请求参数:id(歌曲id,地址中的type固定为0)
+    响应内容:歌曲的热门评论
+  5.mv地址获取
+    请求地址:https://autumnfish.cn/mv/url
+    请求方法:get
+    请求参数:id(mvid,为0表示没有mv)
+    响应内容:mv的地址
+*/
+      // 设置axios的基地址
+      axios.defaults.baseURL = "https://autumnfish.cn";
+
+      // 实例化vue
+      var app = new Vue({
+        el: "#player",
+        data: {},
+        // 方法
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
